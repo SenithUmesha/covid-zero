@@ -25,11 +25,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="get_your_pcrTest_txt">Have you been tested?</string>
     <string name="think_sick">If you think you\'ve been exposed?</string>
-    <string name="api_key">d450bca4de2144d5b3d805e5bc614b15</string>
     <string name="get_vaccinated_txt">Get vaccinated for COVID-19</string>
     <string name="More_info"><a href="https://www.nhs.uk/conditions/coronavirus-covid-19/self-isolation-and-treatment/when-to-self-isolate-and-what-to-do/">More info</a></string>
     <string name="sick_starting">If you have a cough, a fever or difficulty breathing, and you are worried that you may have COVID-19, here are recommendations on what to do, step by step.</string>
-    //sign_in
+    <!-- sign in -->
     <string name="sign_in_hi">Welcome</string>
     <string name="sign_in_email">Email</string>
     <string name="sign_in_continue_with_google">Continue with Google</string>
@@ -38,7 +37,7 @@
     <string name="sign_in_don_t_have_an_account">Don\'t have an account?</string>
     <string name="sign_in_sign_up">Sign up</string>
     <string name="sign_in_forgot_your_password">Forgot your password?</string>
-    //sign_up
+    <!-- sign up -->
     <string name="sign_up_welcome">Sign up</string>
     <string name="sign_up_name">Full Name</string>
     <string name="sign_up_password">Password</string>
@@ -47,7 +46,7 @@
     <string name="sign_up_agree_and_continue_p2">I agree to</string>
     <string name="sign_up_agree_and_continue_p3">Terms of Service and Privacy</string>
     <string name="sign_up_agree_and_continue_p4">Policy</string>
-    //forgot_password
+    <!-- forgot password -->
     <string name="fp_forgot_password">Forgot password</string>
     <string name="fp_submit">Submit</string>
     <string name="fp_text_p1">Don\'t worry it happens. Please enter the</string>
