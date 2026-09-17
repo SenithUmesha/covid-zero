@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -27,7 +28,7 @@ public class News_Main extends AppCompatActivity implements News_SelectListener 
 
     RecyclerView recyclerView;
     News_CustomAdapter adapter;
-    private MainActivity activity = new MainActivity();
+    private final MainActivity activity = new MainActivity();
     private SwipeRefreshLayout swipeRefreshLayout;
     ImageView back;
 
@@ -57,16 +58,14 @@ public class News_Main extends AppCompatActivity implements News_SelectListener 
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
     }
 
-    private void run(){
+    private void run() {
         if (isConnected(this)) {
-        activity.ShowDialog(this);
-        News_RequestManager manager = new News_RequestManager(News_Main.this);
-        manager.getNewsHeadlines(listener, "publishedAt");
-        }
-        else{
+            activity.ShowDialog(this);
+            News_RequestManager manager = new News_RequestManager(News_Main.this);
+            manager.getNewsHeadlines(listener, "publishedAt");
+        } else {
             showInternetDialog();
         }
     }
@@ -80,7 +79,8 @@ public class News_Main extends AppCompatActivity implements News_SelectListener 
 
         @Override
         public void onError(String message) {
-
+            activity.DismissDialog();
+            Toast.makeText(News_Main.this, message, Toast.LENGTH_LONG).show();
         }
     };
 
@@ -141,6 +141,5 @@ public class News_Main extends AppCompatActivity implements News_SelectListener 
     public void OnNewsClicked(NewsHeadlines headlines) {
         startActivity(new Intent(News_Main.this, News_Detailed.class)
         .putExtra("data", headlines));
-
     }
 }
