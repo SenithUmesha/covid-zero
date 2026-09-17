@@ -24,6 +24,8 @@ public class DatabaseAdapter {
     }
 
     public List<VaccineCenter> getAllCenters() {
+        vaccineCenterList.clear();
+
         String[] columns = {DatabaseHelper.KEY_VC_CENTER, DatabaseHelper.KEY_VC_DISTRICT, DatabaseHelper.KEY_VC_POLICE_AREA, DatabaseHelper.KEY_VC_LAT, DatabaseHelper.KEY_VC_LON};
         Cursor cursor = db.query(DatabaseHelper.TABLE_NAME2, columns, null, null, null, null, null, null);
         while (cursor.moveToNext()) {
@@ -47,6 +49,8 @@ public class DatabaseAdapter {
     }
 
     public List<Sick_Info> getAllSickInfo() {
+        sickList.clear();
+
         String[] columns = {DatabaseHelper.KEY_INFO_TOPIC, DatabaseHelper.KEY_INFO_SUB_TOPIC};
         Cursor cursor = db.query(DatabaseHelper.TABLE_NAME1, columns, null, null, null, null, null, null);
         while (cursor.moveToNext()) {
