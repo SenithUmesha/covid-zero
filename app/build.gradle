@@ -1,0 +1,87 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+def secrets = new Properties()
+def secretsFile = rootProject.file("secrets.properties")
+if (secretsFile.exists()) {
+    secretsFile.withInputStream { secrets.load(it) }
+}
+
+def newsApiKey = secrets.getProperty("NEWS_API_KEY", "")
+def mapsApiKey = secrets.getProperty("MAPS_API_KEY", "")
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.myhealthplusplus.app"
+        minSdk 26
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "NEWS_API_KEY", "\"${newsApiKey}\""
+        manifestPlaceholders = [MAPS_API_KEY: mapsApiKey]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-auth:20.1.0'
+
+    implementation platform('com.google.firebase:firebase-bom:29.1.0')
+    implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-analytics'
+
+    implementation 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    implementation files('libs/MPAndroidChart-v3.0.1.jar')
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.airbnb.android:lottie:3.4.3'
+    implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.github.captain-miao:optroundcardview:1.0.0'
+    implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:2.0.1'
+    implementation 'com.eightbitlab:blurview:1.6.6'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation ('eu.livotov.labs.android:CAMView:2.0.1@aar') { transitive = true }
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+    implementation 'it.xabaras.android:recyclerview-swipedecorator:1.2.3'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
