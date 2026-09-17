@@ -1,0 +1,14 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+
+        // Kept for a few libraries from the original 2021–2022 project.
+        jcenter()
+    }
+}
+
+rootProject.name = "CovidZero"
+include ':app'
